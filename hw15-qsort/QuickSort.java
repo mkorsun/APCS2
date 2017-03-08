@@ -87,14 +87,14 @@ public class QuickSort
 
 	return s;
     }
-    public static void qsortH(int[] arr, lower, upper){
-	partPoint= partition(arr, lower, upper, lower+1);
+    public static void qsortH(int[] arr,int  lower,int upper){
+	int partPoint= partition(arr, lower, upper, lower+1);
 	if(upper == lower){
 	    return;
 	}
 	else{
-	    qsortH(arr,part, upper);
-	    qsortH(arr, lower, par);
+	    qsortH(arr,partPoint, upper);
+	    qsortH(arr, lower, partPoint);
 	}
     }
     
