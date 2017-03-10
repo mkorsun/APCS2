@@ -12,6 +12,8 @@ public class LLNode
     // constructor -- initializes instance vars
     public LLNode( String value, LLNode next ) 
     {
+	_cargo = value;
+	_nextnode = next;
 
     }
 
@@ -26,11 +28,12 @@ public class LLNode
     //--------------v  MUTATORS  v--------------
     public String setCargo( String newCargo ) 
 {
-
+    _cargo = newCargo;
     }
 
     public LLNode setNext( LLNode newNext ) 
 {
+    _nextNode = newNext;
     }
     //--------------^  MUTATORS  ^--------------
 

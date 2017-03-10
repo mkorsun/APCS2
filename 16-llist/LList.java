@@ -14,6 +14,9 @@ public class LList implements List
     // constructor -- initializes instance vars
     public LList( ) 
     {
+	_size = 1;
+	_head(
+
 
     }
 
