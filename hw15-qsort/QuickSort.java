@@ -1,17 +1,24 @@
+//Maximilian Korsun
+//APCS2 pd3
+//HW15 -- So So Quick
+//2017-03-09
+
+
 /*****************************************************
  * class QuickSort
- * (skeleton) <<delete this line if untrue>>
+ *
  * Implements quicksort algo to sort an array of ints in place
  *
  * 1. Summary of QuickSort algorithm:
  * QSort(arr): 
  *
  * 2a. Worst pivot choice / array state and associated runtime: 
- *
+
+ *The worst would be if the partition line always created 2 arrays, one of size 0 and one of n-1. this would end up being (n^2)
  * 2b. Best pivot choice / array state and associated runtime:
- *
+ * If it somehow always partitioned directly in the middle, making this run essentially like binary search but sort instead. )(nlog(n))
  * 3. Approach to handling duplicate values in array:
- *
+ *My idea has no problems with duplicates.
  *****************************************************/
 
 /***
@@ -64,7 +71,8 @@ public class QuickSort
      * @param d -- array of ints to be sorted in place
      *****************************************************/
     public static void qsort( int[] d ) 
-    { 
+    {
+	qsortH(d,0,d.length-1);
 
 
     }
@@ -88,13 +96,15 @@ public class QuickSort
 	return s;
     }
     public static void qsortH(int[] arr,int  lower,int upper){
-	int partPoint= partition(arr, lower, upper, lower+1);
-	if(upper == lower){
+       	if(upper - lower < 1){
 	    return;
 	}
 	else{
-	    qsortH(arr,partPoint, upper);
-	    qsortH(arr, lower, partPoint);
+		
+	    int partPoint= partition(arr, lower, upper, upper);
+   
+	    qsortH(arr,partPoint+1, upper);
+	    qsortH(arr, lower, partPoint-1);
 	}
     }
     
@@ -102,8 +112,7 @@ public class QuickSort
     //main method for testing
     public static void main( String[] args ) 
     {
-	/*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y) 
-
+	
 	//get-it-up-and-running, static test case:
 	int [] arr1 = {7,1,5,12,3};
 	System.out.println("\narr1 init'd to: " );
@@ -128,11 +137,10 @@ public class QuickSort
 	qsort( arrN );
 	System.out.println("arrN after sort: " );
 	printArr(arrN);
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
-	/*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y) 
 
+	
 	//get-it-up-and-running, static test case w/ dupes:
 	int [] arr2 = {7,1,5,12,3,7};
 	System.out.println("\narr2 init'd to: " );
@@ -158,7 +166,10 @@ public class QuickSort
 	qsort( arrMatey );
 	System.out.println("arrMatey after sort: " );
 	printArr(arrMatey);
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+        
+	  /*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y) */
+	  /*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y) */
+
 
     }//end main
 
