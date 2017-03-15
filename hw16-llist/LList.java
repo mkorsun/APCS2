@@ -68,16 +68,51 @@ public class LList implements List
 	    throw new IndexOutOfBoundsException();
 	}
 	LLNode temp = _head;
+	for(int k = 0; k < i; k++){
+	    temp = temp.getNext();
+	    if(temp == null){
+		throw new IndexOutOfBoundsException();
+	    }
+	}
+	String old = temp.getCargo();
+	temp.setCargo(x);
+	return old;
+    }
+    public void add(int i, String x){
+	if(_size == 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	LLNode temp = _head;
+	for(int k = 0; k < i; k++){
+	    temp = temp.getNext();
+	    if(temp == null){
+		throw new IndexOutOfBoundsException();
+	    }
+	}
+	
+	temp.setNext(new LLNode(x,temp.getNext()));
+	
+	}
+
+    public String remove(int index){
+	if(_size == 0 || _size == index -1){
+	    throw new IndexOutOfBoundsException();
+	}
+        
+	
 	for(int k = 0; k < i-1; k++){
 	    temp = temp.getNext();
 	    if(temp == null){
 		throw new IndexOutOfBoundsException();
 	    }
 	}
-	String old = temp.getNext().getCargo();
-	temp.setNext(new LLNode(x,temp.getNext().getNext()));
+	String old = _head.getCargo();
+	temp.setNext(temp.getNext().getNext());
 	return old;
     }
+	
+	
+	
 
     
 
