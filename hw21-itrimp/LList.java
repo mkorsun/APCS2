@@ -247,8 +247,12 @@ public class LList<T> implements List<T>
 	//constructor 
 	public MyIterator() 
 	{
+<<<<<<< HEAD
 	    _dummy = new DLLNode(null,null,_head);
 	    _okToRemove = false;
+=======
+	    //place dummy node in front of head
+>>>>>>> f257316271b1c549c411c982403ba1adaba265ed
             //...other housekeeping chores?
             /* YOUR IMPLEMENTATION HERE */
 	}
@@ -257,18 +261,27 @@ public class LList<T> implements List<T>
 	//return true if iteration has more elements.
 	public boolean hasNext() 
 	{
+<<<<<<< HEAD
 	    if(_dummy.getNext() != null){
 		return true;
 	    }
 	    return false;
+=======
+            /* YOUR IMPLEMENTATION HERE */
+>>>>>>> f257316271b1c549c411c982403ba1adaba265ed
 	}
 
 
 	//return next element in this iteration
 	public T next() 
+<<<<<<< HEAD
 	{	    _okToRemove = true;
 	    
             return _dummy.getNext();
+=======
+	{
+            /* YOUR IMPLEMENTATION HERE */
+>>>>>>> f257316271b1c549c411c982403ba1adaba265ed
 	}
 
 
@@ -283,12 +296,19 @@ public class LList<T> implements List<T>
 	    //maintain invariant that _dummy always points to a node
 	    //   (...so that hasNext() will not crash)
 
+<<<<<<< HEAD
 	    if (_dummy.getNext()==null);
 
 	    //if removing first node...
             /* YOUR IMPLEMENTATION HERE */
 	    if (
 	    
+=======
+            /* YOUR IMPLEMENTATION HERE */
+
+	    //if removing first node...
+            /* YOUR IMPLEMENTATION HERE */
+>>>>>>> f257316271b1c549c411c982403ba1adaba265ed
 
 	    //if removing last node...
             /* YOUR IMPLEMENTATION HERE */
