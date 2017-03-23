@@ -16,6 +16,16 @@ public class LatKtS
      **********************************************************/
     public static String flip( String s ) 
     { 
+	int size = s.length();
+	Latkes TBF = new Latkes(size);
+	for(int i = 0; i<size;i++){
+	    TBF.push(s.substring(i,i+1));
+	}
+	String retStr = "";
+	for(int i = 0; i < size; i++){
+	    retStr+= TBF.pop();
+	}
+	return retStr;
 
     }//end flip()
 
