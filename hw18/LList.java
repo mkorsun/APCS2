@@ -1,3 +1,8 @@
+//Maximilian Korsun
+//APCS2 pd3
+//HW18 - On the DLL
+//2017 - 03-16
+
 /*****************************************************
  * class LList
  * skeleton
@@ -8,14 +13,14 @@ public class LList implements List
 { //your homemade List.java must be in same dir
 
     //instance vars
-    private LLNode _head;
+    private DLLNode _head;
     private int _size;
 
     // constructor -- initializes instance vars
     public LList( ) 
     {
 	_size = 0;
-	_head= new LLNode(null,null);
+	_head= new DLLNode(null,null,null);
 
 
     }
@@ -25,10 +30,10 @@ public class LList implements List
 
     public boolean add(String x){
 	if(_size == 0){
-	    _head = new LLNode(x,null);
+	    _head = new DLLNode(null,x,null);
 	}
 	else{
-	    _head = new LLNode(x,_head);
+	    _head = new DLLNode(null,x,_head);
 	}
 	_size +=1;
 	return true;
@@ -90,7 +95,7 @@ public class LList implements List
 	    }
 	}
 	
-	temp.setNext(new LLNode(x,temp.getNext()));
+	temp.setNext(new DLLNode(temp.getPrev(),x,temp.getNext()));
 	
 	}
 
@@ -110,43 +115,9 @@ public class LList implements List
 	temp.setNext(temp.getNext().getNext());
 	return old;
     }
-<<<<<<< HEAD
-    public String add(int i, String x){
-	if(_size == 0){
-	    throw new IndexOutOfBoundsException();
-	}
-	LLNode temp = _head;
-	for(int k = 0; k < i-1; k++){
-	    temp = temp.getNext();
-	    if(temp == null){
-		throw new IndexOutOfBoundsException();
-	    }
-	}
-	String old = temp.getCargo();
-	temp.setNext(new LLNode(x,temp.getNext()));
-	return old;
-    }
-    public String remove(int i){
-	if(_size == 0){
-	    throw new IndexOutOfBoundsException();
-	}
-	LLNode temp = _head;
-	for(int k = 0; k < i-1; k++){
-	    temp = temp.getNext();
-	    if(temp == null){
-		throw new IndexOutOfBoundsException();
-	    }
-	}
-	String old = temp.getCargo();
-	temp.setNext(new LLNode(temp.getNext().getNext().getCargo(),temp.getNext().getNext().getNext()));
-	_size -=1;
-	return old;
-    }
-=======
 	
 	
 	
->>>>>>> f3f558f0546db6936deda06dc3ed8f3dc6e9079d
 
     
 
@@ -208,8 +179,8 @@ public class LList implements List
 
 	System.out.println( "2nd item is: " + james.get(1) );
 
-	james.remove(1);
-	System.out.println( "...and now 2nd item is: " + james.get(1) );
+	james.set( 1, "got" );
+	System.out.println( "...and now 2nd item is: " + james.set(1,"got") );
 
 	System.out.println( james );
 		/*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y) 
