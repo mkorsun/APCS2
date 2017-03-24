@@ -110,9 +110,43 @@ public class LList implements List
 	temp.setNext(temp.getNext().getNext());
 	return old;
     }
+<<<<<<< HEAD
+    public String add(int i, String x){
+	if(_size == 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	LLNode temp = _head;
+	for(int k = 0; k < i-1; k++){
+	    temp = temp.getNext();
+	    if(temp == null){
+		throw new IndexOutOfBoundsException();
+	    }
+	}
+	String old = temp.getCargo();
+	temp.setNext(new LLNode(x,temp.getNext()));
+	return old;
+    }
+    public String remove(int i){
+	if(_size == 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	LLNode temp = _head;
+	for(int k = 0; k < i-1; k++){
+	    temp = temp.getNext();
+	    if(temp == null){
+		throw new IndexOutOfBoundsException();
+	    }
+	}
+	String old = temp.getCargo();
+	temp.setNext(new LLNode(temp.getNext().getNext().getCargo(),temp.getNext().getNext().getNext()));
+	_size -=1;
+	return old;
+    }
+=======
 	
 	
 	
+>>>>>>> f3f558f0546db6936deda06dc3ed8f3dc6e9079d
 
     
 
@@ -174,8 +208,8 @@ public class LList implements List
 
 	System.out.println( "2nd item is: " + james.get(1) );
 
-	james.set( 1, "got" );
-	System.out.println( "...and now 2nd item is: " + james.set(1,"got") );
+	james.remove(1);
+	System.out.println( "...and now 2nd item is: " + james.get(1) );
 
 	System.out.println( james );
 		/*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y) 
