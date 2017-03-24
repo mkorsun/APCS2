@@ -1,3 +1,10 @@
+//Max Korsun
+//APCS2 pd3
+//HW21 -  Make itr Work
+//2017 - 03 - 22
+
+
+
 /*****************************************************
  * class LList
  * Implements a linked list of DLLNodes.
@@ -247,8 +254,10 @@ public class LList<T> implements List<T>
 	//constructor 
 	public MyIterator() 
 	{
-	    //place dummy node in front of head
-            //...other housekeeping chores?
+
+	    _dummy = new DLLNode<T>(null,null,_head);
+	    _okToRemove = false;
+	    
             /* YOUR IMPLEMENTATION HERE */
 	}
 
@@ -256,14 +265,19 @@ public class LList<T> implements List<T>
 	//return true if iteration has more elements.
 	public boolean hasNext() 
 	{
-            /* YOUR IMPLEMENTATION HERE */
+	    if(_dummy.getCargo() != null){
+		return true;
+	    }
+	    return false;
 	}
 
 
 	//return next element in this iteration
 	public T next() 
 	{
-            /* YOUR IMPLEMENTATION HERE */
+            
+	    _okToRemove = true;
+	     return _dummy.getNext().getCargo();
 	}
 
 
@@ -277,17 +291,33 @@ public class LList<T> implements List<T>
 	    //If removing only remaining node...
 	    //maintain invariant that _dummy always points to a node
 	    //   (...so that hasNext() will not crash)
+	    if(_size == 1 && _dummy.getNext().equals(null)){
+		
+	    }
+	    
 
-            /* YOUR IMPLEMENTATION HERE */
+           
 
 	    //if removing first node...
-            /* YOUR IMPLEMENTATION HERE */
+	    else if(_dummy.getNext().equals(_head)){
+		_dummy = _head;
+		
+	    }
 
 	    //if removing last node...
-            /* YOUR IMPLEMENTATION HERE */
+            else if(_dummy.getNext().equals(null)){
+		_dummy.getPrev().setNext(null);
+	    }
+		
+		
+		
 
 	    //if removing an interior node...
-            /* YOUR IMPLEMENTATION HERE */
+	    else{
+		_dummy.getPrev().setNext(_dummy.getNext());
+	    }
+	     
+           
 
 	    _size--; //decrement size attribute of outer class LList
 	}
@@ -300,7 +330,7 @@ public class LList<T> implements List<T>
     //main method for testing
     public static void main( String[] args ) 
     {
-	/*~~~~~~~~~~~~~~~m~o~v~e~~m~e~~d~o~w~n~~~~~~~~~~~~~~
+       
 	LList<String> james = new LList<String>();
 
 	System.out.println("initially: " );
@@ -343,7 +373,7 @@ public class LList<T> implements List<T>
 
 	System.out.println( "...after remove(0): " + james.remove(0) );
 	System.out.println( james + "\tsize: " + james.size() );
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+       
     }//end main
 
 }//end class LList
