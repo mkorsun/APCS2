@@ -1,3 +1,10 @@
+//Maximilian Korsun
+//APCS2 pd3
+//HW23 - Stack: What is it good for?
+//2017 -03 - 24
+
+
+
 /*****************************************************
  * class LatKtS (LatKeysToSuccess)
  * Driver class for Latkes.
@@ -38,14 +45,44 @@ public class LatKtS
      **********************************************************/
     public static boolean allMatched( String s ) 
     { 
+	if (s.length() <= 0){
+	    return true;
+	}
+	if(s.length() % 2 != 0){
+	    return false;
+	}
+	Latkes temp = new Latkes(s.length());
 
+	String check;
+
+	for(int i = 0; i<s.length(); i++){
+	    check = s.substring(i,i+1);
+	    if(check.equals("(") || check.equals("[") || check.equals("{")){
+		temp.push(check);// save this thing as topmost to be checked
+	    }
+
+	    else if (check.equals(")")){
+		if(temp.isEmpty()) return false;
+		if(!temp.pop().equals("(")) return false;
+	    }
+	     else if (check.equals("}")){
+		if(temp.isEmpty()) return false;
+		if(!temp.pop().equals("{")) return false;
+	    }
+	     else if (check.equals("]")){
+		if(temp.isEmpty()) return false;
+		if(!temp.pop().equals("[")) return false;
+	    }
+	}
+	return true;
+	       
     }//end allMatched()
 
 
     //main method to test
     public static void main( String[] args ) { 
 
-	/*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
+        
 	System.out.println(flip("stressed"));
         System.out.println(allMatched( "({}[()])" )); //true
         System.out.println(allMatched( "([)]" ) ); //false
@@ -53,7 +90,7 @@ public class LatKtS
         System.out.println(allMatched( "](){([])}" ) ); //false
         System.out.println(allMatched( "(){([])}(" ) ); //false
         System.out.println(allMatched( "()[[]]{{{{((([])))}}}}" ) ); //true
-          ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
+          
     }
 
 }//end class LatKtS

@@ -1,3 +1,9 @@
+//Max Korsun
+//APCS2 pd3
+//HW24 - Leon Leonwood Stack
+//2017-03-27
+
+
 /*****************************************************
  * class LLStack
  * SKELETON
@@ -10,14 +16,46 @@ import java.util.LinkedList;
 
 public class LLStack<T> implements Stack<T> 
 {
+    private LinkedList<T> _stack = new LinkedList<T>();
+    private int _stackSize = 0;
 
+    public void push(T  x){
+	_stack.addFirst(x);
+	_stackSize+=1;
+    }
 
+    public T pop(){
+        if(_stack.size() ==0){
+	    return null;
+	}
+	else{
+	    T retT =  _stack.remove();
+	    _stackSize -=1;
+	    return retT;
+	}
+	    
+    }
+
+    public T peek(){
+       	if(_stackSize == 0){
+	    return null;
+	}
+	
+	return _stack.getFirst();
+    }
+
+    public boolean isEmpty(){
+	if(_stackSize == 0){
+	    return true;
+	}
+	return false;
+    }
 
 
     //main method for testing
     public static void main( String[] args ) 
 {
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
+     
 	Stack<String> tastyStack = new LLStack<String>();
 
 	tastyStack.push("aoo");
@@ -74,7 +112,7 @@ public class LLStack<T> implements Stack<T>
 	System.out.println( "peek: " + tastyStack.peek() );
 	System.out.println( "pop: " + tastyStack.pop() );
 	System.out.println( tastyStack.pop() );
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/   
+      
     }//end main()
 
 }//end class LLStack
