@@ -19,13 +19,21 @@ public class LLQueue<T> implements Queue<T> {
     // default constructor creates an empty queue
     public LLQueue()
  { 
-
+     _front = null;
+     _end = null;
     }
 
     // means of adding a thing to the collection
     public void enqueue( T enQVal ) 
 {
-
+    if(_front == null){
+	_front.setValue(enQVal);
+	_end = _front;
+    }
+    else{
+	_end.setNext(new LLNode<T>(enQVal, null));
+	_end = _end.getNext();
+    }
     }//O(?)
 
 
