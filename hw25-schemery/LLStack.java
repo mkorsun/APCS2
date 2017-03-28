@@ -13,35 +13,38 @@ public class LLStack<T> implements Stack<T>
     //constructor
     public LLStack() 
     { 	
-	/* YOUR IMPLEMENTATION HERE*/
+	_stack = new LinkedList<T>();
     }
 
 
     //means of insertion
     public void push( T s ) 
     {
-	/* YOUR IMPLEMENTATION HERE*/
+	_stack.add(s);
     }
 
 
     //means of viewing top element without removing
     public T peek( ) 
     { 
-	/* YOUR IMPLEMENTATION HERE*/
+	return _stack.peekLast();
     }
 
 
     //means of removal
     public T pop( ) 
     { 
-	/* YOUR IMPLEMENTATION HERE*/
+	if(isEmpty()) return null;
+	T ret = _stack.getLast();
+	_stack.removeLast();
+	return T;
     }
 
 
     //chk for emptiness
     public boolean isEmpty() 
     {
-	/* YOUR IMPLEMENTATION HERE*/
+	return _stack.size() == 0;
     }
 
 
