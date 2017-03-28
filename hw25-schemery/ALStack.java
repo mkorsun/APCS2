@@ -13,38 +13,39 @@ public class ALStack<T> implements Stack<T>
     //constructor
     public ALStack() 
     { 
-	/* YOUR IMPLEMENTATION HERE*/
+	_stack = new ArrayList<T>();
     }
 
     //overloaded constructor to allow for init capacity
     public ALStack( int size ) 
     { 
-	/* YOUR IMPLEMENTATION HERE*/
+	_stack = new ArrayList<T>(size);
     }
 
     //means of insertion
     public void push( T s ) 
     {
-	/* YOUR IMPLEMENTATION HERE*/
+	_stack.add(0,s);
     }
 
     //means of viewing top element without removing
     public T peek( ) 
-    { 
-	/* YOUR IMPLEMENTATION HERE*/
+    {
+	return _stack.get(0);
+
     }
 
     //means of removal
     public T pop( ) 
     { 
-	/* YOUR IMPLEMENTATION HERE*/
+	return _stack.remove(0);
     }
 
 
     //chk for emptiness
     public boolean isEmpty() 
     {
-	/* YOUR IMPLEMENTATION HERE*/
+	return _stack.isEmpty();
     }
 
 
