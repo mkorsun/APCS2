@@ -1,3 +1,9 @@
+//Max Korsun
+//APCS2 pd3
+//HW26 - The english do not wait in line
+//2017 - 03 - 29
+
+
 /*****************************************************
  * class LLQueue
  * uses a linked list to implement a QUEUE
@@ -19,14 +25,14 @@ public class LLQueue<T> implements Queue<T> {
     // default constructor creates an empty queue
     public LLQueue()
  { 
-     _front = null;
-     _end = null;
+     _front = new LLNode<T>(null,null);
+     _end = _front;
     }
 
     // means of adding a thing to the collection
     public void enqueue( T enQVal ) 
 {
-    if(_front == null){
+    if(_front.getValue() == null){
 	_front.setValue(enQVal);
 	_end = _front;
     }
@@ -34,42 +40,56 @@ public class LLQueue<T> implements Queue<T> {
 	_end.setNext(new LLNode<T>(enQVal, null));
 	_end = _end.getNext();
     }
-    }//O(?)
+    }//O(1)
 
 
     // means of removing a thing from the collection
     // remove and return thing at front of queue
     // assume _queue ! empty
     public T dequeue() 
-{ 
+{
+    T retT = _front.getValue();
+    _front = _front.getNext();
+    return retT;
 
-    }//O(?)
+    }//O(1)
 
 
     // means of peeking at thing next in line for removal
     public T peekFront() 
 {
+    return _front.getValue();
 
-    }//O(?)
+    }//O(1)
 
 
     public boolean isEmpty() 
 {
-
-    }//O(?)
+    return _front == null;
+    }//O(1)
 
 
     // print each node, separated by spaces
-    public String toString() 
-{ 
+      public String toString() 
+{
+    String retStr = "";
+    LLNode<T> it = new LLNode<T>(null,_front);
+    it = it.getNext();
+    while(it.getValue() != null){
+	retStr += it+ " ";
+	it = it.getNext();
+    }
+    return retStr;
+ 
+   
 
-    }//O(?)
+    }//O(n)
 
 
 
     public static void main( String[] args ) {
 
-	/*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
+	
 	Queue<String> LLQueuelJ = new LLQueue<String>();
 
 	System.out.println("\nnow enqueuing thrice..."); 
@@ -87,7 +107,7 @@ public class LLQueue<T> implements Queue<T> {
 
 	System.out.println("\nDequeuing from empty queue should yield error..."); 
 	System.out.println( LLQueuelJ.dequeue() );
-	  ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
+	  
 
     }//end main
 
