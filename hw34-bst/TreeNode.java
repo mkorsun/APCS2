@@ -7,6 +7,9 @@
 public class TreeNode 
 {
     //instance variables / attributes of a TreeNode:
+    TreeNode leftchild;
+    TreeNode rightchild;
+    int cargo;
 
 
     /*****************************************************
@@ -16,7 +19,9 @@ public class TreeNode
      *****************************************************/
     TreeNode( int initValue )
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
+	cargo = initValue;
+	leftchild = null;
+	rightchild = null;
     }
           
 
@@ -27,7 +32,9 @@ public class TreeNode
      *****************************************************/
     TreeNode( int initValue, TreeNode initLeft, TreeNode initRight ) 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
+	cargo = initValue;
+	leftchild = initLeft;
+	rightchild = initRight;
     }
  
 
@@ -36,7 +43,7 @@ public class TreeNode
      *****************************************************/
     TreeNode getLeft() 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
+	return leftchild;
     }
 
 
@@ -45,7 +52,7 @@ public class TreeNode
      *****************************************************/
     TreeNode getRight() 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
+	return rightchild;
     }
 
 
@@ -54,7 +61,7 @@ public class TreeNode
      *****************************************************/
     int getValue() 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
+        return cargo;
     }
 
 
@@ -63,7 +70,7 @@ public class TreeNode
      *****************************************************/
     void setLeft( TreeNode theNewLeft ) 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
+	leftchild = theNewLeft;
     }
 
 
@@ -71,8 +78,8 @@ public class TreeNode
      * Sets the value of the right subtree of this node.
      *****************************************************/
     void setRight( TreeNode theNewRight ) 
-    {
-	/*** YOUR IMPLEMENTATION HERE ***/
+    {              
+	rightchild = theNewRight;     
     }
 
 
@@ -81,7 +88,7 @@ public class TreeNode
      *****************************************************/
     void setValue( int theNewValue ) 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
+	cargo = theNewValue;
     }
  
 }//end class
