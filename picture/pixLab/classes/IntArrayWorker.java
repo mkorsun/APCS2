@@ -98,5 +98,18 @@ public class IntArrayWorker
       }
     }
   }
+    public int getCount(int x){
+	int count = 0;
+	for(int[] rowarray: matrix){
+	    for(int each:rowarray){
+		if(each == x){
+		    count ++;
+		}
+	    }
+	}
+	return count;
+    }
+
+
  
 }
