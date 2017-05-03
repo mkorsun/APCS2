@@ -13,6 +13,8 @@
 public class BST 
 {
     //instance variables / attributes of a BST:
+    TreeNode root;
+    
 
 
     /*****************************************************
@@ -20,7 +22,7 @@ public class BST
      *****************************************************/
     BST( ) 
     {
-	/*** YOUR IMPLEMENTATION HERE ***/
+	root = new TreeNode(null);/*** YOUR IMPLEMENTATION HERE ***/
     }
 
 
@@ -30,7 +32,14 @@ public class BST
      *****************************************************/
     public void insert( int newVal ) 
     {
-     	/*** YOUR IMPLEMENTATION HERE ***/
+     	if(root == null){
+	    root = new TreeNode(newval);
+	}
+	else{
+	    if (newVal <= root.getCargo()){
+
+
+
     }
 
 
