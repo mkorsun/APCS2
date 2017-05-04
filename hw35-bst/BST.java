@@ -123,7 +123,20 @@ public class BST
      *****************************************************/
     TreeNode search( int target )
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+       	if(root == null){
+       	    return null;
+	}
+	else{
+	    if (newVal <= root.getValue()){
+		if(root.getLeft() == null){
+		    return null;
+		}
+		else{
+		    BST leftsub = new BST(root.getLeft());
+		    leftsub.search(target);
+		}
+	    }
+
     }
 
 
