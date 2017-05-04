@@ -10,6 +10,12 @@
  * This BST only holds ints (its nodes have int cargo)
  *****************************************************/
 
+
+//Max Korsun
+//APCS2 pd3
+//HW34 -- Algorith as a Data Structure
+//2017-05-04
+
 public class BST 
 {
     //instance variables / attributes of a BST:
@@ -20,10 +26,17 @@ public class BST
     /*****************************************************
      * default constructor
      *****************************************************/
-    BST( ) 
+    BST() 
     {
-	root = new TreeNode(null);/*** YOUR IMPLEMENTATION HERE ***/
+	root = null;
     }
+ /*****************************************************
+     * overloaded constructor
+     *****************************************************/
+    BST(TreeNode val){
+	root = val;
+    }
+    
 
 
     /*****************************************************
@@ -33,14 +46,23 @@ public class BST
     public void insert( int newVal ) 
     {
      	if(root == null){
-	    root = new TreeNode(newval);
+	    root = new TreeNode(newVal);
 	}
 	else{
-	    if (newVal <= root.getCargo()){
-
-
-
+	    if (newVal <= root.getValue()){
+		BST leftsub = new BST(root.getLeft());
+		leftsub.insert(newVal);
+	    }
+	    else{
+		BST rightsub = new BST(root.getRight());
+		rightsub.insert(newVal);
+	    }
+	}
     }
+
+
+
+    
 
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -51,17 +73,45 @@ public class BST
 
     public void preOrderTrav() 
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+        if(root == null){
+	    return;
+	}
+	else{
+	    System.out.print(root.getValue() + " ");
+	    BST leftsub = new BST(root.getLeft());
+	    BST rightsub = new BST(root.getRight());
+	    leftsub.preOrderTrav();
+	    rightsub.preOrderTrav();
+	}
+	    
+	    
     }
 
     public void inOrderTrav() 
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+	if(root == null){
+	    return;
+	}
+	BST leftsub = new BST(root.getLeft());
+	leftsub.inOrderTrav();
+	System.out.print(root.getValue() + " ");
+	BST rightsub = new BST(root.getRight());
+	rightsub.inOrderTrav();
+	
+        
     }
 
     public void postOrderTrav() 
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+       	if(root == null){
+	    return;
+	}
+	BST leftsub = new BST(root.getLeft());
+	leftsub.postOrderTrav();
+       	BST rightsub = new BST(root.getRight());
+	rightsub.postOrderTrav();
+	System.out.print(root.getValue() + " ");
+      
     }
     //~~~~~~~~~~~~~^~~TRAVERSALS~~^~~~~~~~~~~~~~~~~~~~~~
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,7 +120,7 @@ public class BST
     //main method for testing
     public static void main( String[] args ) 
     {
-	/*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
+        
 	  BST arbol = new BST();
 
 	  arbol.insert( 4 );
@@ -88,7 +138,7 @@ public class BST
 	
 	  System.out.println( "\npost-order traversal:" );
 	  arbol.postOrderTrav();	
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	  
     }
 
 }//end class
