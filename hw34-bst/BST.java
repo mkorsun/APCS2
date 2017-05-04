@@ -19,7 +19,7 @@
 public class BST 
 {
     //instance variables / attributes of a BST:
-    TreeNode root;
+    public TreeNode root;
     
 
 
@@ -45,20 +45,35 @@ public class BST
      *****************************************************/
     public void insert( int newVal ) 
     {
+
+	
      	if(root == null){
 	    root = new TreeNode(newVal);
 	}
 	else{
 	    if (newVal <= root.getValue()){
-		BST leftsub = new BST(root.getLeft());
-		leftsub.insert(newVal);
+		if(root.getLeft() == null){
+		    root.setLeft(new TreeNode(newVal));
+		}
+		else{
+		    BST leftsub = new BST(root.getLeft());
+		    leftsub.insert(newVal);
+		}
 	    }
 	    else{
-		BST rightsub = new BST(root.getRight());
-		rightsub.insert(newVal);
+		if(root.getRight() == null){
+		    root.setRight(new TreeNode(newVal));
+		}
+		else{
+		    BST rightsub = new BST(root.getRight());
+		    rightsub.insert(newVal);
+		}
 	    }
 	}
     }
+	   
+	
+    
 
 
 
@@ -124,6 +139,7 @@ public class BST
 	  BST arbol = new BST();
 
 	  arbol.insert( 4 );
+        
 	  arbol.insert( 2 );
 	  arbol.insert( 5 );
 	  arbol.insert( 6 );
