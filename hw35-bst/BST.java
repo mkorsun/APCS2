@@ -1,3 +1,9 @@
+//Max Korsun
+//APCS2 pd3
+//HW35 -- BST's is the perfect place for shade
+//2017-05-05
+
+
 /*****************************************************
  * class BST
  * <<< skeleton >>>
@@ -13,6 +19,7 @@
 public class BST 
 {
     //instance variables / attributes of a BST:
+    TreeNode root;
 
 
     /*****************************************************
@@ -62,6 +69,9 @@ public class BST
 	    }
 	}
     }
+	    
+	
+    
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //~~~~~~~~~~~~~v~~TRAVERSALS~~v~~~~~~~~~~~~~~~~~~~~~
@@ -126,18 +136,39 @@ public class BST
        	if(root == null){
        	    return null;
 	}
+	if(root.getValue() == target){
+       	    return root;
+	}
 	else{
-	    if (newVal <= root.getValue()){
+	    if (target <= root.getValue()){
 		if(root.getLeft() == null){
 		    return null;
 		}
+		if(root.getLeft().getValue() == target){
+		    return root.getLeft();
+		}
 		else{
 		    BST leftsub = new BST(root.getLeft());
-		    leftsub.search(target);
+		    return leftsub.search(target);
 		}
 	    }
-
+	    else{
+		if(root.getRight() == null){
+		    return null;
+		}
+		if(root.getRight().getValue() == target){
+		    return root.getRight();
+		}
+		else{
+		    BST rightsub = new BST(root.getRight());
+		    return rightsub.search(target);
+		}
+	    }
+	}
     }
+
+
+    
 
 
     /*****************************************************
@@ -147,8 +178,29 @@ public class BST
      *****************************************************/
     public int height()
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+    	return height(root);
     }
+
+    public int height(TreeNode tN){
+	int lheight = 0;
+	int rheight = 0;
+	if(tN == null){
+	    return 0;
+	}
+	if(tN.getLeft() != null){
+	    lheight = lheight + height(tN.getLeft());
+	}
+	if(tN.getRight() != null){
+	    rheight = rheight + height(tN.getRight());
+	}
+	if(lheight >= rheight){
+	    return lheight+1;
+	}
+	else{
+	    return rheight + 1;
+	}
+    }
+	
 
 
     /*****************************************************
@@ -157,16 +209,32 @@ public class BST
      *****************************************************/
     public int numLeaves()
     {
-    	/*** YOUR IMPLEMENTATION HERE ***/
+	return numLeaves(root);
+	
     }
 
+    public int numLeaves(TreeNode tN)
+    {
+	if(tN == null){
+	    return 0;
+	}
+	if(tN.getLeft() == null && tN.getRight() == null){
+	    return 1;
+	}
+	else{
+	    return numLeaves(tN.getLeft())+numLeaves(tN.getRight());
+	}
+    }
+	     
+	     
+		 
 
 
 
     //main method for testing
     public static void main( String[] args ) 
     {
-	/*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
+	
 	  BST arbol = new BST();
 
 	  arbol.insert( 4 );
@@ -186,7 +254,16 @@ public class BST
 	  arbol.postOrderTrav();	
 
 	  //insert your new test calls here...
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	  System.out.println("does 6 exist?");
+	  System.out.println(arbol.search(6));
+	  System.out.println("does 7 exist?");
+	  System.out.println(arbol.search(7));
+	  System.out.println("how tall is it tho?");
+	  System.out.println(arbol.height());
+	  System.out.println("how leafyishere isit?");
+	  System.out.println(arbol.numLeaves());
+	  
+
     }
 
 }//end class
