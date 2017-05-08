@@ -1,3 +1,9 @@
+//Max Korsun
+//APCS2 pd3
+//HW36 - Prune Your Tree
+//2017 - 05 - 07
+
+
 /*****************************************************
  * class BST
  * Implementation of the BINARY SEARCH TREE abstract data type (ADT) 
@@ -135,16 +141,46 @@ public class BST
 	TreeNode follower = null; //piggybacker
 
 	//first, walk leader down to target node w/ follower trailing...
+	while(leader.getValue()!= remVal){
+	    if(leader.getValue() > remVal){
+		if(leader.getLeft()!= null){
+		    follower = leader;
+		    leader = leader.getLeft();
+		}
+		else{
+		    return null;//IF value is less than remval, but no left option, must not exist
+		}
+	    }
+	    else if(leader.getValue < remVal){
+		if(leader.getRight() != null){
+		    follower = leader;
+		    leader = leader.getRight();
+		}
+		else{
+		    return null;
+		}
+	    }
+	}
 
 	
 	//CASE 1: removal node is a leaf
 	//action: snip it
 	if ( isLeaf(leader) ) {
 	    //subcase: 1-node tree
+	    if(leader.equals(_root){
+		    _root = null;
+		}
 
 	    //subcase: removal node is a left child
+		else if(leader.equals(follower.getLeft())){
+		    follower.setLeft(null);
+		}
+			
 
 	    //subcase: removal node is a right child
+		else if (leader.equals(follower.getRight())){
+		    follower.setRight(null);
+		}
 
 	}
 
@@ -153,19 +189,42 @@ public class BST
 	else if ( leader.getRight()==null ) { //rem node's child is on left
 
 	    //subcase: removal node is root
+	    if(leader.equals(_root)){
+		_root = _root.getLeft();
+	    }
 
 	    //subcase: removal node is a left child
+	    else if(leader.equals(follower.getLeft())){
+		follower.setLeft(leader.getLeft());
+	    }
+		
 
 	    //subcase: removal node is a right child
-
+	    else if(leader.equals(follower.getRight())){
+		follower.setLeft(leader.getLeft());
+	    }
 	}
+	     
+       	
+
+	
 	else if ( leader.getLeft()==null ) { //rem node's child is on right
 
 	    //subcase: removal node is root
+	    if(leader.equals(_root)){
+		_root=_root.getRight();
+	    }
 
 	    //subcase: removal node is a left child
+	     else if(leader.equals(follower.getLeft())){
+		follower.setLeft(leader.getRight());
+	    }
+	    
 
 	    //subcase: removal node is a right child
+	     else if(leader.equals(follower.getRight())){
+		follower.setLeft(leader.getRight());
+	     }
 
 	}
 
@@ -187,10 +246,19 @@ public class BST
             remove( maxLST.getValue() );
 
 	    //subcase: removal node is root
+	    if(leader.equals(_root)){
+		    _root = tmp;
+		}
 
 	    //subcase: removal node is a left child
+	    else if(leader.equals(follower.getLeft())){
+		follower.setRight(tmp);
+	    }
 
 	    //subcase: removal node is a right child
+	    else if(leader.equals(follower.getRight())){
+		follower.setRight(tmp);
+	    }
 
 	}
 	return leader;
